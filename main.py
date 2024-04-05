@@ -5,20 +5,14 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import functions as f
 
-# BEYZA NUR OKATAN 20011034
-# ABDULKADİR TÜRE  20011042
-
-# YAPAY ZEKA DERSİ 1. ODEV - GENETIK ALGORITMA ILE GORSEL TAKLIT
-
 # Ilgili kütüphaneleri yuklemek icin; pip install -r requirements.txt
 
 def main():
 
     boyut = 64 # 48x48 , 60x60 ideal, girdi ve cikti gorsellerini resize etmek icin kullanilir.
     
-    girdi_yolu = "girdi7.png" #Girdi görselinin yolu
-    nokta_sayisi = 500 #Odevin genel yonergesine uygun olarak cember icinde rastgele nokta secilmez. Yalnızca cember etrafındaki 360 nokta kullanılır.
-    #Ek islev olarak nokta_sayisi 0'dan buyuk verilirse algoritma cember icinden de rastgele nokta_sayisi kadar nokta secer. Boylece gorsel taklit yetenegi artar.
+    girdi_yolu = "in1.png" #Girdi görselinin yolu
+    nokta_sayisi = 500
 
     girdi = f.resim_oku(girdi_yolu,boyut) #girdi görseli alınır ve boyutlandırılır.
     cember_k = f.cember_dizi(boyut,nokta_sayisi) #cember noktalarının koordinatları alınır.
@@ -86,7 +80,7 @@ def main():
     #Genetik algoritma sonucunda en iyi bireyin cikti görseli kaydedilir.
     cikti = f.gorsel_ciz(boyut, en_iyiler[0][0])
     image = Image.fromarray((cikti).astype(np.uint8), mode='L')
-    image.save("cikti4.png")
+    image.save("out.png")
     print("En iyi bireyin cikti görseli kaydedildi.")
     #grafik çizdirme
     plt.plot(gorsel_array)
